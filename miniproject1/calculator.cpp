@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-// Mini Project 1: Terminal Calculator 
+// Mini Project 1: Terminal Calculator and git
 int main() {
     double num1, num2;
     char operation;

@@ -30,11 +30,10 @@ Copilot notes
 
 Demo
 
-Example impulse noise reduction (median, 1 iteration):
+Example impulse noise reduction :
 
 ```
-Before - mean: 28.8 min: 0 max: 255
-After - mean: 10 min: 10 max: 10
+
 5 5
 10 10 10 10 10
 10 10 10 10 10

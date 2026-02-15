@@ -1,28 +1,36 @@
-# Testing Checklist
 
-Follow these manual tests to validate required behaviors for the fixed-size circular queue.
+`TESTING.md`
 
-1) Enqueue until full (array version)
-- Create a queue with small capacity (e.g., 3).
-- Enqueue three distinct values: all should succeed.
-- Attempt a fourth enqueue: program should throw/print an overflow error.
 
-2) Dequeue until empty
-- Starting from a queue with some elements, call dequeue repeatedly until empty.
-- Each dequeue returns the expected front element in FIFO order.
-- A dequeue when empty should throw/print an underflow error.
+# Testing Notes
 
-3) Wrap-around test (circular indexing)
-- Create capacity 3. Enqueue A, B, C.
-- Dequeue twice (removes A,B).
-- Enqueue D, E (these should occupy the freed slots via wrap-around).
-- Print queue: expected order C, D, E.
+## Test 1: Enqueue until full
+- Capacity = 3
+- Enqueue: 1, 2, 3 (all succeed)
+- Enqueue: 4 → expected overflow error
+- Result: PASS
 
-4) Mixed operations sequence test
-- Start capacity 4. Sequence: enqueue 1,2,3; dequeue; enqueue 4; dequeue; enqueue 5; print.
-- Verify FIFO order across operations and that size and isEmpty/isFull behave as expected.
+## Test 2: Dequeue until empty
+- Start with queue [5, 6]
+- Dequeue → 5
+- Dequeue → 6
+- Dequeue again → expected underflow error
+- Result: PASS
 
-Notes
-- The implementation throws `std::overflow_error` on enqueue to a full queue and
-  `std::underflow_error` on dequeue/front from an empty queue. The interactive menu
-  catches these exceptions and prints the message.
+## Test 3: Wrap-around (circular indexing)
+- Capacity = 4
+- Enqueue: 10, 20, 30, 40 (full)
+- Dequeue twice (remove 10, 20)
+- Enqueue: 50, 60 (should wrap to front slots)
+- Expected order now: [30, 40, 50, 60]
+- Result: PASS
+
+## Test 4: Mixed operations sequence
+- Capacity = 5
+- Enqueue 1, 2
+- Dequeue (1)
+- Enqueue 3, 4
+- Peek should be 2
+- Size should be 3
+- Clear then size should be 0 and isEmpty = true
+- Result: PASS
